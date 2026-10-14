@@ -3,124 +3,277 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Md. Rakibul Islam | Web Developer</title>
+    <meta
+      name="description"
+      content="Md. Rakibul Islam is a full-stack web developer in Dhaka, Bangladesh, building responsive React, Laravel, and WordPress experiences."
+    />
+    <meta name="theme-color" content="#f7f9ff" />
+    <title>Md. Rakibul Islam | Full-Stack Web Developer</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://kit.fontawesome.com/b6846912bf.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
   </head>
   <body>
-    <!-- NAVBAR -->
-    <header class="navbar">
-      <div class="logo">RAKIB</div>
-      <button class="menu-toggle" onclick="toggleMenu()">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-      <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-        <button class="dark-toggle" onclick="toggleDarkMode()">
-          <i class="fa-solid fa-moon" id="dark-icon"></i>
+    <canvas class="cursor-trail" aria-hidden="true"></canvas>
+    <span class="cursor-dot" aria-hidden="true"></span>
+    <svg class="scroll-snake" viewBox="0 0 32 800" aria-hidden="true">
+      <path class="snake-track" pathLength="1" d="M16 0 C16 100 28 100 16 200 S4 300 16 400 S28 500 16 600 S4 700 16 800" />
+      <path class="snake-progress" pathLength="1" d="M16 0 C16 100 28 100 16 200 S4 300 16 400 S28 500 16 600 S4 700 16 800" />
+      <circle class="snake-head" cx="16" cy="0" r="5" />
+    </svg>
+
+    <header class="site-header">
+      <div class="container header-container">
+        <a class="site-logo" href="#home" aria-label="Rakibul Islam home">RAKIB<span>.</span></a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-      </nav>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#expertise">Expertise</a>
+          <a class="nav-link" href="#projects">Projects</a>
+          <a class="nav-link" href="#experience">Experience</a>
+        </nav>
+        <a class="header-button" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+      </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero" id="about">
-      <div class="hero-text">
-        <h1>Hello, I'm <span>Md. Rakibul Islam</span></h1>
-        <h3>Full Stack Web Developer (ReactJS | Laravel | WordPress)</h3>
-        <p>
-          Passionate about building interactive and scalable web applications
-          that solve real-world problems.
-        </p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/raaakib0" target="_blank"
-            ><i class="fa-brands fa-linkedin"></i
-          ></a>
-          <a href="https://github.com/raaakib0" target="_blank"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-          <a href="mailto:raaakib0@gmail.com"
-            ><i class="fa-solid fa-envelope"></i
-          ></a>
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-container">
+          <div class="hero-content">
+            <p class="eyebrow"><span class="eyebrow-line"></span> FULL-STACK WEB DEVELOPER · DHAKA, BD</p>
+            <h1>Turning ideas into <span>digital experiences.</span></h1>
+            <p class="hero-description">
+              I’m <strong>Md. Rakibul Islam</strong> — a full-stack developer with 3+ years of
+              professional experience building thoughtful web products with React, Laravel,
+              Vue.js, and WordPress.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+              <a class="button button-secondary" href="mailto:rakib.wdev@gmail.com">Get in touch</a>
+            </div>
+            <div class="hero-socials" aria-label="Social links">
+              <a href="https://github.com/rakibwdev" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+              <a href="https://www.linkedin.com/in/rakibwdev" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+              <a href="mailto:rakib.wdev@gmail.com">Email <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="visual-orbit orbit-one"></div>
+            <div class="visual-orbit orbit-two"></div>
+            <div class="hero-image-frame">
+              <div class="frame-top"><span></span><span></span><span></span><small>rakib.dev</small></div>
+              <img src="images/my-bg.png" alt="Portrait of Md. Rakibul Islam" />
+            </div>
+            <div class="floating-note note-code"><span class="note-icon">&lt;/&gt;</span><span><strong>Clean code</strong><small>Built to scale</small></span></div>
+            <div class="floating-note note-status"><span class="status-dot"></span><span><strong>Open to work</strong><small>Let’s build something</small></span></div>
+            <div class="visual-caption">Thoughtful code. Real-world impact.</div>
+          </div>
         </div>
+        <div class="container hero-stats" aria-label="Career highlights">
+          <div><strong>3<span>+</span></strong><small>Years of experience</small></div>
+          <div><strong>50<span>+</span></strong><small>WordPress websites</small></div>
+          <div><strong>5<span>+</span></strong><small>React applications</small></div>
+          <div><strong>5<span>+</span></strong><small>Laravel &amp; Vue projects</small></div>
+          <a class="scroll-cue" href="#about"><span class="scroll-cue-mark">↓</span> SCROLL TO EXPLORE</a>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div class="container about-grid">
+          <div class="section-intro">
+            <p class="eyebrow"><span class="eyebrow-line"></span> A LITTLE ABOUT ME</p>
+            <h2>Good products happen when <span>the details matter.</span></h2>
+          </div>
+          <div class="about-copy">
+            <p>
+              I’m a detail-oriented full-stack web developer from Dhaka, Bangladesh. I build
+              responsive, scalable applications across the stack — from polished interfaces to
+              dependable APIs, custom CMS experiences, and deployment workflows.
+            </p>
+            <p>
+              My work spans custom WordPress themes and plugins, React applications, and Laravel
+              backends. I enjoy solving practical problems, improving performance, and working
+              closely with teams to ship useful software.
+            </p>
+            <a class="text-link" href="https://github.com/rakibwdev" target="_blank" rel="noreferrer">More about my work on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section expertise-section" id="expertise">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span> WHAT I DO</p>
+              <h2>From first sketch to <span>final deployment.</span></h2>
+            </div>
+            <p>I bring design, development, and delivery together to create complete web solutions.</p>
+          </div>
+          <div class="expertise-grid">
+            <article class="expertise-card">
+              <span class="card-index">01 / FRONTEND</span>
+              <div class="expertise-icon" aria-hidden="true">✳</div>
+              <h3>Frontend development</h3>
+              <p>Fast, accessible interfaces that feel intuitive on every screen and device.</p>
+              <div class="tag-list"><span>React</span><span>Vue.js</span><span>JavaScript</span><span>Tailwind</span></div>
+            </article>
+            <article class="expertise-card">
+              <span class="card-index">02 / BACKEND</span>
+              <div class="expertise-icon" aria-hidden="true">{ }</div>
+              <h3>Backend &amp; APIs</h3>
+              <p>Reliable application logic, integrations, and REST APIs built to grow.</p>
+              <div class="tag-list"><span>Laravel</span><span>Node.js</span><span>PHP</span><span>REST API</span></div>
+            </article>
+            <article class="expertise-card">
+              <span class="card-index">03 / CMS</span>
+              <div class="expertise-icon" aria-hidden="true">W</div>
+              <h3>WordPress solutions</h3>
+              <p>Custom plugins, themes, and commerce experiences shaped around your workflow.</p>
+              <div class="tag-list"><span>WordPress</span><span>WooCommerce</span><span>ACF</span><span>PHP</span></div>
+            </article>
+            <article class="expertise-card">
+              <span class="card-index">04 / DELIVERY</span>
+              <div class="expertise-icon" aria-hidden="true">↗</div>
+              <h3>Quality &amp; delivery</h3>
+              <p>Thoughtful testing, performance improvements, and dependable deployments.</p>
+              <div class="tag-list"><span>Git</span><span>Docker</span><span>CI/CD</span><span>Postman</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section skills-section">
+        <div class="container skills-layout">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> MY TOOLKIT</p>
+            <h2>Technologies I <span>work with.</span></h2>
+            <p class="skills-description">A practical toolkit for building, testing, and shipping modern web experiences.</p>
+          </div>
+          <div class="skills-list">
+            <div class="skill-group"><h3>Frontend</h3><p>React.js · Vue.js · JavaScript ES6+ · TypeScript · HTML5 · CSS3 · Tailwind CSS · Bootstrap · jQuery</p></div>
+            <div class="skill-group"><h3>Backend &amp; data</h3><p>Laravel · PHP · Node.js · REST APIs · MySQL · MongoDB · PostgreSQL</p></div>
+            <div class="skill-group"><h3>CMS &amp; platforms</h3><p>WordPress · Custom plugins · WooCommerce · ACF · Elementor · Netlify · Vercel</p></div>
+            <div class="skill-group"><h3>Tools &amp; workflow</h3><p>Git · GitHub · Docker · Postman · Figma · VS Code · Google Sheets · Advanced Excel</p></div>
+            <div class="skill-group"><h3>Languages</h3><p>English · Working proficiency &nbsp; / &nbsp; Bengali · Native</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section projects-section" id="projects">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span> SELECTED WORK</p>
+              <h2>Projects built to <span>make a difference.</span></h2>
+            </div>
+            <a class="text-link all-projects-link" href="https://github.com/rakibwdev" target="_blank" rel="noreferrer">Browse GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-art art-rental"><span class="project-counter">01 — REACT / NODE</span><span class="art-symbol">↗</span><div class="art-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="window-content"><span>Find your next ride</span><b>Move at your pace.</b><em>EXPLORE VEHICLES　→</em></div></div></div>
+              <div class="project-info"><div><h3>Rent-A-Car Marketplace</h3><p>Multi-vendor booking platform with vehicle management, secure APIs, and responsive rental flows.</p></div><div class="project-links"><a href="https://enjoy-trip.web.app" target="_blank" rel="noreferrer">Live site ↗</a><a href="https://github.com/rakibwdev/enjoy-trip-client" target="_blank" rel="noreferrer">Client code ↗</a></div></div>
+              <div class="project-tags"><span>React</span><span>Node.js</span><span>MongoDB</span><span>Tailwind</span></div>
+            </article>
+            <article class="project-card">
+              <div class="project-art art-commerce"><span class="project-counter">02 — WORDPRESS</span><span class="art-symbol">✳</span><div class="commerce-copy"><small>ALATAF PHARMA</small><b>Everyday<br />wellness.</b><span>SHOP NOW　↗</span></div></div>
+              <div class="project-info"><div><h3>E-commerce &amp; POS</h3><p>Custom WordPress plugins and an online store supporting order workflows and digital payments.</p></div><div class="project-links"><a href="https://alatafpharma.com" target="_blank" rel="noreferrer">Live site ↗</a><a href="https://github.com/rakibwdev/Custom-Plugin-Alataf-Pharma" target="_blank" rel="noreferrer">Plugin code ↗</a></div></div>
+              <div class="project-tags"><span>WordPress</span><span>PHP</span><span>WooCommerce</span><span>Custom plugins</span></div>
+            </article>
+            <article class="project-card">
+              <div class="project-art art-health"><span class="project-counter">03 — WORDPRESS / HEALTH TECH</span><span class="health-cross">+</span><div class="health-card"><small>RxAI · SMARTER CARE</small><b>Prescriptions,<br />reimagined.</b><span>AI-powered healthcare</span></div></div>
+              <div class="project-info"><div><h3>RxAi Prescription Platform</h3><p>Dynamic product website with doctor registration, custom forms, service pages, and SEO-focused content.</p></div><div class="project-links"><a href="mailto:rakib.wdev@gmail.com?subject=RxAi%20project">Ask about project ↗</a><a href="https://github.com/rakibwdev" target="_blank" rel="noreferrer">GitHub profile ↗</a></div></div>
+              <div class="project-tags"><span>WordPress</span><span>ACF</span><span>Elementor</span><span>Forminator</span></div>
+            </article>
+            <article class="project-card">
+              <div class="project-art art-product"><span class="project-counter">04 — LARAVEL / PHP</span><span class="art-symbol">◈</span><div class="product-card-ui"><small>PRODUCT CATALOG</small><b>Everything<br />in its place.</b><span>MANAGE PRODUCTS　↗</span></div></div>
+              <div class="project-info"><div><h3>Product Management Platform</h3><p>Admin-controlled product catalog with full CRUD capabilities and a responsive storefront.</p></div><div class="project-links"><a href="https://github.com/rakibwdev" target="_blank" rel="noreferrer">Explore code ↗</a><a href="mailto:rakib.wdev@gmail.com?subject=Product%20platform">Request demo ↗</a></div></div>
+              <div class="project-tags"><span>Laravel</span><span>PHP</span><span>Bootstrap</span><span>MySQL</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section experience-section" id="experience">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span> THE JOURNEY</p>
+              <h2>Experience that <span>keeps me curious.</span></h2>
+            </div>
+            <p>Three years of building, collaborating, and finding better ways to solve problems.</p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div class="timeline-date">JAN 2026 — PRESENT</div>
+              <div class="timeline-content"><div class="timeline-title"><div><h3>WordPress Developer</h3><p>Forazi Tech · Website Development &amp; IT Consulting</p></div><span class="current-badge">CURRENT</span></div><ul><li>Build and customize WordPress pages and plugins for project and client requirements.</li><li>Integrate custom PHP, JavaScript, HTML, and CSS to extend functionality and improve user experience.</li><li>Support site troubleshooting, performance optimization, feature updates, and structured data quality.</li></ul></div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div class="timeline-date">FEB 2025 — DEC 2025</div>
+              <div class="timeline-content"><div class="timeline-title"><div><h3>Senior Executive — Digital Marketing &amp; WordPress</h3><p>ITmedicus Solutions · Software Development</p></div></div><ul><li>Contributed to WordPress projects, custom features, and plugin development.</li><li>Tested web and mobile applications, documented issues, and worked with teams to improve release quality.</li><li>Supported user onboarding and training for new digital platforms.</li></ul></div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div class="timeline-date">APR 2023 — FEB 2025</div>
+              <div class="timeline-content"><div class="timeline-title"><div><h3>Executive — IT Department</h3><p>JMI Group · JMI Hospital Requisite Mfg. Ltd.</p></div></div><ul><li>Developed and maintained internal full-stack applications using ReactJS and Node.js.</li><li>Automated reporting with Google Sheets and Excel, reducing manual workload by 50%.</li><li>Managed GitHub repositories and deployment workflows to support team collaboration.</li></ul></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section education-section">
+        <div class="container education-grid">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> EDUCATION</p>
+            <h2>Always <span>learning.</span></h2>
+          </div>
+          <div class="education-list">
+            <article><span>2024</span><div><h3>M.Sc. in Computer Science</h3><p>Royal University of Dhaka · CGPA 3.60 / 4.00</p></div></article>
+            <article><span>2023</span><div><h3>B.Sc. in Computer Science &amp; Engineering</h3><p>Sonargaon University, Dhaka · CGPA 3.42 / 4.00</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="container contact-container">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> HAVE A PROJECT IN MIND?</p>
+            <h2>Let’s make something <span>meaningful.</span></h2>
+            <p>Available for full-time opportunities, freelance projects, and collaborative work.</p>
+          </div>
+          <a class="button button-light" href="mailto:rakib.wdev@gmail.com">Start a conversation <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="container contact-details">
+          <a href="mailto:rakib.wdev@gmail.com">rakib.wdev@gmail.com</a>
+          <a href="tel:+8801976571196">+880 1976 571196</a>
+          <span>Malibagh, Dhaka, Bangladesh</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-container">
+        <a class="site-logo" href="#home">RAKIB<span>.</span></a>
+        <p>Designed &amp; built by Md. Rakibul Islam · <span id="year">2026</span></p>
+        <div class="footer-socials"><a href="https://github.com/rakibwdev" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/rakibwdev" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="#home">Back to top ↑</a></div>
       </div>
-      <div class="hero-img">
-        <img src="images/my-bg.png" alt="Rakibul Islam" />
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="projects">
-      <h2>Featured Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Rent-A-Car Multi-Vendor Platform</h3>
-          <p>
-            Developed with React.js, Node.js, and MongoDB Atlas for real-time
-            booking and management.
-          </p>
-          <a href="https://enjoy-trip.web.app" target="_blank" class="btn"
-            >Live Demo</a
-          >
-        </div>
-        <div class="project-card">
-          <h3>E-Commerce Platform with POS</h3>
-          <p>
-            Built with WordPress, PHP, and custom plugins for automated order
-            management and payment processing.
-          </p>
-          <a href="https://alatafpharma.com" target="_blank" class="btn">Live Website</a>
-        </div>
-        <div class="project-card">
-          <h3>Product Showcasing App</h3>
-          <p>
-            Developed in Laravel with CRUD operations and responsive UI using
-            Bootstrap.
-          </p>
-          <a href="#" target="_blank" class="btn">View Demo</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="skills">
-      <h2>Technical Skills</h2>
-      <ul>
-        <li><i class="fa-brands fa-html5"></i> HTML5</li>
-        <li><i class="fa-brands fa-css3-alt"></i> CSS3</li>
-        <li><i class="fa-brands fa-js"></i> JavaScript</li>
-        <li><i class="fa-brands fa-react"></i> React.js</li>
-        <li><i class="fa-brands fa-node-js"></i> Node.js</li>
-        <li><i class="fa-brands fa-laravel"></i> Laravel</li>
-        <li><i class="fa-solid fa-database"></i> MongoDB / MySQL</li>
-        <li><i class="fa-brands fa-wordpress"></i> WordPress (Plugin Dev)</li>
-      </ul>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-      <h2>Contact Me</h2>
-      <p><i class="fa-solid fa-envelope"></i> raaakib0@gmail.com</p>
-      <p><i class="fa-solid fa-phone"></i> +880 1976 571196</p>
-      <p><i class="fa-solid fa-location-dot"></i> Malibag, Dhaka, Bangladesh</p>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <p>© 2025 Md. Rakibul Islam | All Rights Reserved</p>
     </footer>
-
-    <script src="script.js"></script>
   </body>
 </html>
