@@ -5,7 +5,7 @@
   --blue: #141881;
   --blue-dark: #0b0e4d;
   --blue-soft: #eef0ff;
-  --green: #104e16;
+  --green: #179223;
   --paper: #f7f9ff;
   --white: #ffffff;
   --line: #e5e9f2;
@@ -84,6 +84,7 @@ img {
   transform: translate(-50%, -50%);
   transition: width 180ms ease, height 180ms ease, opacity 160ms ease;
   will-change: transform;
+  border-radius: 50%;
 }
 
 .cursor-dot.is-visible {
@@ -556,7 +557,7 @@ img {
 .hero-image-frame {
   position: relative;
   /* z-index: 3; */
-  width: min(400px, 80%);
+  width: min(400px, 60%);
   padding: 10px;
   border: 1px solid rgb(255 255 255 / 42%);
   background: rgb(255 255 255 / 42%);
@@ -606,7 +607,7 @@ img {
 
 .visual-orbit {
   position: absolute;
-  border: 1px solid rgb(50 56 212 / 11%);
+  /* border: 1px solid rgb(50 56 212 / 11%); */
 }
 
 .orbit-one {
@@ -672,12 +673,44 @@ img {
   font-size: 12px;
 }
 
-.status-dot {
+/* .status-dot {
   width: 8px;
   height: 8px;
   background: var(--green);
   box-shadow: 0 0 0 4px #e5f5f0;
+  border-radius: 50%;
+} */
+
+.status-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  box-shadow: 0 0 0 4px #e5f5f0;
+  border-radius: 50%;
 }
+
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--green);
+  border-radius: 50%;
+  animation: status-pulse 1.8s ease-out infinite;
+}
+
+@keyframes status-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
 
 .visual-caption {
   position: absolute;
@@ -1270,6 +1303,7 @@ img {
   border: 3px solid var(--white);
   background: var(--blue);
   box-shadow: 0 0 0 1px #bcc4f7;
+  border-radius: 50%;
 }
 
 .timeline-date {

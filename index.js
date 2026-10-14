@@ -104,6 +104,27 @@ document.addEventListener("DOMContentLoaded", () => {
     "(hover: hover) and (pointer: fine)",
   );
 
+  const fireflyContainer = document.querySelector(".hero-fireflies");
+
+  if (fireflyContainer) {
+    const fireflies = document.createDocumentFragment();
+
+    for (let index = 0; index < 18; index += 1) {
+      const firefly = document.createElement("span");
+      const size = Math.random() * 16 + 12;
+
+      firefly.style.top = `${Math.random() * 90}%`;
+      firefly.style.left = `${Math.random() * 95}%`;
+      firefly.style.width = `${size}px`;
+      firefly.style.height = `${size}px`;
+      firefly.style.animationDuration = `${Math.random() * 4 + 4}s`;
+      firefly.style.animationDelay = `${-Math.random() * 6}s`;
+      fireflies.appendChild(firefly);
+    }
+
+    fireflyContainer.replaceChildren(fireflies);
+  }
+
   if (!motionPreference.matches && "IntersectionObserver" in window) {
     const revealItems = document.querySelectorAll(
       ".section-heading, .about-grid, .expertise-card, .skill-group, .project-card, .timeline-item, .education-list article, .contact-container",
