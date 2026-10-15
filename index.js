@@ -7,6 +7,60 @@ document.addEventListener("DOMContentLoaded", () => {
   const snakeHead = document.querySelector(".snake-head");
   const year = document.querySelector("#year");
   let previousScrollY = window.scrollY;
+  const roleText = document.querySelector(".role-text");
+
+
+   if (roleText) {
+
+        const roles = [
+           "Digital experiences.",
+           "Powerful web solutions.",
+           "Modern web applications.",
+           "Scalable digital products.",
+           "High-performance websites."
+        ];
+
+        let roleIndex = 0;
+        let letterIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+
+            const currentRole = roles[roleIndex];
+
+            if (isDeleting) {
+                letterIndex--;
+            } else {
+                letterIndex++;
+            }
+
+            roleText.textContent = currentRole.substring(0, letterIndex);
+
+            let speed = isDeleting ? 50 : 100;
+
+            // Pause when a complete title is displayed.
+            if (!isDeleting && letterIndex === currentRole.length) {
+                isDeleting = true;
+                speed = 1500;
+            }
+
+            // Move to the next title after deleting the current one.
+            else if (isDeleting && letterIndex === 0) {
+                isDeleting = false;
+                roleIndex++;
+
+                if (roleIndex >= roles.length) {
+                    roleIndex = 0;
+                }
+
+                speed = 400;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        typeEffect();
+    }
 
   if (year) {
     year.textContent = String(new Date().getFullYear());
