@@ -2,13 +2,14 @@
   color-scheme: light;
   --ink: #15213b;
   --muted: #67738a;
-  --blue: #144181;
-  --blue-dark: #0b0e4d;
-  --blue-soft: #eef0ff;
+  --blue: #08324e;
+  --blue-dark: #061f32;
+  --blue-hover: #125e84;
+  --blue-soft: #eaf2f7;
   --green: #179223;
-  --paper: #f7f9ff;
+  --paper: #f7f9fc;
   --white: #ffffff;
-  --line: #e5e9f2;
+  --line: #dce5ec;
   --font-body: "DM Sans", sans-serif;
   --font-display: "Space Grotesk", sans-serif;
   --container: 1320px;
@@ -79,7 +80,7 @@ img {
   height: 11px;
   border: 2px solid var(--white);
   background: var(--blue);
-  box-shadow: 0 1px 8px rgb(50 56 212 / 35%);
+  box-shadow: 0 1px 8px rgba(50, 120, 212, 0.35);
   opacity: 0;
   transform: translate(-50%, -50%);
   transition: width 180ms ease, height 180ms ease, opacity 160ms ease;
@@ -132,8 +133,8 @@ img {
 }
 
 .snake-head {
-  fill: var(--muted);
-  filter: drop-shadow(0 0 4px rgb(50 56 212 / 40%));
+  fill: var(--paper);
+  filter: drop-shadow(0 0 4px rgba(30, 95, 156, 0.747));
 }
 
 .site-header {
@@ -188,7 +189,7 @@ img {
 }
 
 .nav-link {
-  color: #59667f;
+  color: var(--blue);
   font-size: 13px;
   font-weight: 600;
   transition: color 160ms ease;
@@ -196,7 +197,7 @@ img {
 
 .nav-link:hover,
 .nav-link:focus-visible {
-  color: var(--blue);
+  color: var(--blue-dark);
 }
 
 .header-button {
@@ -291,21 +292,25 @@ img {
   pointer-events: none;
 }
 
+
 .hero-fireflies span {
   position: absolute;
   display: block;
   width: 22px;
   height: 22px;
+
   background: radial-gradient(
     circle,
-    rgb(50, 55, 212) 0 12%,
-    rgb(82 101 239 / 38%) 24%,
+    rgb(8 50 78 / 95%) 0 12%,
+    rgb(32 105 143 / 38%) 24%,
     transparent 70%
   );
-  filter: drop-shadow(0 0 7px rgb(70 88 230 / 58%));
+
+  filter: drop-shadow(0 0 7px rgb(32 105 143 / 58%));
   opacity: 0.5;
   animation: firefly-drift 5.2s ease-in-out infinite alternate;
 }
+
 
 .hero-fireflies span:nth-child(1) {
   top: 15%;
@@ -604,7 +609,7 @@ img {
 }
 
 .frame-top > span:first-child {
-  background: #8790f5;
+  background: var(--blue);
 }
 
 .frame-top small {
@@ -655,7 +660,7 @@ img {
 
     border:
         1px solid
-        #141881;
+        var(--blue);
 
     border-radius: 50%;
 
@@ -681,7 +686,7 @@ img {
 
     border-radius: 50%;
 
-    background: #141881;
+    background: var(--blue);
 }
 
 
@@ -1482,7 +1487,7 @@ img {
 }
 
 .contact-container .eyebrow {
-  color: #bfc4ff;
+  color:  var(--paper);
 }
 
 .contact-container h2 {
@@ -1496,7 +1501,7 @@ img {
 
 .contact-container > div > p:last-child {
   margin-top: 13px;
-  color: #d5d8ff;
+  color:  var(--paper);
   font-size: 14px;
 }
 
@@ -1517,7 +1522,7 @@ img {
   gap: 28px;
   padding-top: 18px;
   border-top: 1px solid rgb(255 255 255 / 22%);
-  color: #d7d9ff;
+  color: #cbcbcb;
   font-size: 14px;
 }
 
