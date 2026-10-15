@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       previousScrollY = scrollY;
     }
+// Snake
 
     if (snake && snakeHead) {
       snake.style.strokeDashoffset = String(1 - progress);
@@ -116,6 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", updateScrollDecorations, { passive: true });
   updateScrollDecorations();
 
+
+  // Menu
+  
   const closeMenu = () => {
     if (!menuToggle || !mainNav) {
       return;
@@ -158,6 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "(hover: hover) and (pointer: fine)",
   );
 
+
+  // hero fireflies
   const fireflyContainer = document.querySelector(".hero-fireflies");
 
   if (fireflyContainer) {
@@ -203,6 +209,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("js-motion");
   }
 
+  // cursor tail
+
   const canvas = document.querySelector(".cursor-trail");
   const dot = document.querySelector(".cursor-dot");
   const context = canvas?.getContext("2d");
@@ -218,6 +226,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let hasPointerPosition = false;
   let canvasWidth = 0;
   let canvasHeight = 0;
+  let trailX = 0;
+let trailY = 0;
 
   const resizeCanvas = () => {
     const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
@@ -243,9 +253,11 @@ document.addEventListener("DOMContentLoaded", () => {
       dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
       dot.classList.add("is-visible");
 
-      if (!hasPointerPosition) {
+    if (!hasPointerPosition) {
         lastX = mouseX;
         lastY = mouseY;
+        trailX = mouseX;
+        trailY = mouseY;
         hasPointerPosition = true;
       }
     },
@@ -276,31 +288,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const animateTrail = () => {
-    context.globalCompositeOperation = "destination-out";
-    context.fillStyle = "rgba(0, 0, 0, 0.24)";
-    context.fillRect(0, 0, canvasWidth, canvasHeight);
-    context.globalCompositeOperation = "source-over";
 
-    if (hasPointerPosition) {
-      const distance = Math.hypot(mouseX - lastX, mouseY - lastY);
+const trailPoints = [];
+const maxTrailPoints = 25;
 
-      if (distance > 0.5) {
+const animateTrail = () => {
+  context.clearRect(0, 0, canvasWidth, canvasHeight);
+
+  if (hasPointerPosition) {
+    trailX += (mouseX - trailX) * 0.1;
+    trailY += (mouseY - trailY) * 0.1;
+
+    trailPoints.push({ x: trailX, y: trailY });
+
+    if (trailPoints.length > maxTrailPoints) {
+      trailPoints.shift();
+    }
+
+    if (trailPoints.length > 1) {
+      for (let i = 1; i < trailPoints.length; i++) {
+        const progress = i / trailPoints.length;
+
         context.beginPath();
-        context.moveTo(lastX, lastY);
-        context.lineTo(mouseX, mouseY);
-        context.strokeStyle = "rgba(50, 56, 212, 0.42)";
-        context.lineWidth = 2;
+        context.moveTo(
+          trailPoints[i - 1].x,
+          trailPoints[i - 1].y
+        );
+        context.lineTo(
+          trailPoints[i].x,
+          trailPoints[i].y
+        );
+
+        context.strokeStyle = `rgba(8, 50, 78, ${progress * 0.65})`;
+        context.lineWidth = progress * 3;
         context.lineCap = "round";
         context.lineJoin = "round";
         context.stroke();
-        lastX = mouseX;
-        lastY = mouseY;
       }
     }
+  }
 
-    window.requestAnimationFrame(animateTrail);
-  };
+  window.requestAnimationFrame(animateTrail);
+};
 
   window.requestAnimationFrame(animateTrail);
 });

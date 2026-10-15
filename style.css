@@ -33,6 +33,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  cursor: none;
 }
 
 body,
@@ -57,7 +58,7 @@ img {
 }
 
 ::selection {
-  background: #dce0ff;
+  background: #dcedff;
   color: var(--ink);
 }
 
@@ -660,7 +661,7 @@ img {
 
     border:
         1px solid
-        var(--blue);
+        var(--blue-dark);
 
     border-radius: 50%;
 
@@ -686,7 +687,7 @@ img {
 
     border-radius: 50%;
 
-    background: var(--blue);
+    background: var(--blue-dark);
 }
 
 
@@ -1100,14 +1101,13 @@ img {
   position: absolute;
   top: 16px;
   right: 20px;
-  color: rgb(50 56 212 / 40%);
+  color: rgb(50 113 212 / 68%);
   font-size: 31px;
 }
 
 .art-rental {
   background:
-    radial-gradient(circle at 80% 80%, rgb(65 78 236 / 20%), transparent 37%),
-    linear-gradient(135deg, #e8ebff, #dce2ff);
+   radial-gradient(circle at 80% 80%, rgb(65 149 236 / 20%), transparent 37%), linear-gradient(135deg, #e8ebff, #dcf0ff)
 }
 
 .art-window {
@@ -1252,8 +1252,7 @@ img {
 
 .art-product {
   background:
-    radial-gradient(circle at 85% 24%, rgb(137 117 224 / 24%), transparent 31%),
-    linear-gradient(135deg, #eeebff, #e1def8);
+    radial-gradient(circle at 85% 24%, rgb(117 194 224 / 24%), transparent 31%), linear-gradient(135deg, #b6dbf3, #ecf7ff)
 }
 
 .product-card-ui {
