@@ -575,7 +575,7 @@ img {
 .hero-image-frame {
   position: relative;
   /* z-index: 3; */
-  width: min(400px, 60%);
+  width: min(330px, 80%);
   padding: 10px;
   border: 1px solid rgb(255 255 255 / 42%);
   background: rgb(255 255 255 / 42%);
@@ -645,7 +645,7 @@ img {
 
     position: absolute;
 
-    right: 75px;
+    right: 90px;
 
     bottom: 330px;
 
@@ -955,11 +955,12 @@ img {
   font-family: var(--font-display);
   font-size: 17px;
   font-weight: 700;
+  border-radius: 3px;
 }
 
 .expertise-card:nth-child(3) .expertise-icon {
-  background: #eaf6f2;
-  color: var(--green);
+  background: #077abf14;
+  color: #077abf;
 }
 
 .expertise-card h3 {
@@ -995,6 +996,7 @@ img {
   color: #66728a;
   font-size: 14px;
   font-weight: 600;
+  border-radius: 3px;
 }
 
 .skills-section {
@@ -1467,7 +1469,7 @@ img {
 
 .contact-section {
   padding: 78px 0 24px;
-  background: #252bb5;
+  background: var(--blue);
   color: var(--white);
 }
 
@@ -1489,7 +1491,7 @@ img {
 }
 
 .contact-container h2 span {
-  color: #a9efcf;
+  color: #cbcbcb;
 }
 
 .contact-container > div > p:last-child {
@@ -1501,7 +1503,7 @@ img {
 .button-light {
   flex-shrink: 0;
   background: var(--white);
-  color: #272db5;
+  color: var(--blue);
 }
 
 .button-light:hover {
@@ -1931,7 +1933,7 @@ img {
   }
 
   .hero-image-frame {
-    width: min(310px, 80%);
+    width: min(260px, 80%);
   }
 
   .hero-image-frame img {
