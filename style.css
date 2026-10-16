@@ -2,7 +2,7 @@
   color-scheme: light;
   --ink: #15213b;
   --muted: #67738a;
-  --blue: #08324e;
+  --blue: #0e3c5a;
   --blue-dark: #061f32;
   --blue-hover: #125e84;
   --blue-soft: #eaf2f7;
@@ -33,6 +33,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  cursor: none;
 }
 
 body,
@@ -57,7 +58,7 @@ img {
 }
 
 ::selection {
-  background: #dce0ff;
+  background: #dcedff;
   color: var(--ink);
 }
 
@@ -164,7 +165,7 @@ img {
   min-height: 60px;
 }
 
-.site-logo {
+/* .site-logo {
   flex-shrink: 0;
   font-family: var(--font-display);
   font-size: 23px;
@@ -179,6 +180,24 @@ img {
 
 .site-logo span {
   color: var(--blue);
+} */
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.site-logo img {
+  display: block;
+  width: 140px;
+  height: auto;
+  transition: width 300ms ease;
+}
+
+.site-header.is-compact .site-logo img {
+  width: 110px;
 }
 
 .main-nav {
@@ -649,21 +668,15 @@ img {
 .circle {
 
     position: absolute;
-
-    right: 90px;
-
-    bottom: 330px;
-
+    right: 15%;
+    top: 0;
     width: 90px;
-
     height: 90px;
-
     border:
         1px solid
-        var(--blue);
+        var(--blue-dark);
 
     border-radius: 50%;
-
     opacity: 0.7;
     z-index: -1;
     transition: transform 0.8s ease;
@@ -671,22 +684,14 @@ img {
 
 
 .circle::after {
-
     content: "";
-
     position: absolute;
-
     width: 8px;
-
     height: 8px;
-
     top: 10px;
-
     right: 10px;
-
     border-radius: 50%;
-
-    background: var(--blue);
+    background: var(--blue-dark);
 }
 
 
@@ -1100,14 +1105,13 @@ img {
   position: absolute;
   top: 16px;
   right: 20px;
-  color: rgb(50 56 212 / 40%);
+  color: rgb(50 113 212 / 68%);
   font-size: 31px;
 }
 
 .art-rental {
   background:
-    radial-gradient(circle at 80% 80%, rgb(65 78 236 / 20%), transparent 37%),
-    linear-gradient(135deg, #e8ebff, #dce2ff);
+   radial-gradient(circle at 80% 80%, rgb(65 149 236 / 20%), transparent 37%), linear-gradient(135deg, #e8ebff, #dcf0ff)
 }
 
 .art-window {
@@ -1252,8 +1256,7 @@ img {
 
 .art-product {
   background:
-    radial-gradient(circle at 85% 24%, rgb(137 117 224 / 24%), transparent 31%),
-    linear-gradient(135deg, #eeebff, #e1def8);
+    radial-gradient(circle at 85% 24%, rgb(117 194 224 / 24%), transparent 31%), linear-gradient(135deg, #b6dbf3, #ecf7ff)
 }
 
 .product-card-ui {
@@ -1541,10 +1544,10 @@ img {
   justify-content: space-between;
   gap: 20px;
 }
-
+/* 
 .footer-container .site-logo {
   font-size: 19px;
-}
+} */
 
 .footer-container > p {
   color: #8791a6;
@@ -1620,6 +1623,9 @@ img {
     align-items: center;
     gap: 15px;
   }
+    .circle {
+        right: 0;
+}
 }
 
 @media (max-width: 760px) {
@@ -1641,7 +1647,7 @@ img {
   }
 
   .site-logo {
-    font-size: 21px;
+    width: 120px;
   }
 
   .menu-toggle {
@@ -1901,9 +1907,23 @@ img {
   .footer-container {
     flex-wrap: wrap;
   }
+
+  .circle {
+        right: 16%;
+}
+
 }
 
 @media (max-width: 480px) {
+
+  .circle {
+    right: 10%;
+}
+
+.site-logo {
+    width: 120px;
+  }
+
   .container {
     width: calc(100% - 34px);
   }
