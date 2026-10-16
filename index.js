@@ -69,10 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateScrollDecorations = () => {
     const scrollableHeight =
       document.documentElement.scrollHeight - window.innerHeight;
-    const progress =
+    targetProgress =
       scrollableHeight > 0
         ? Math.min(1, Math.max(0, window.scrollY / scrollableHeight))
         : 0;
+
+    if (snake && snakeHead && !snakeAnimationFrame) {
+      snakeAnimationFrame = window.requestAnimationFrame(animateSnake);
+    }
 
     if (header) {
       const scrollY = window.scrollY;
@@ -91,13 +95,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
       previousScrollY = scrollY;
     }
-// Snake
+  };
+
+  let targetProgress = 0;
+  let currentProgress = 0;
+  let snakeAnimationFrame = 0;
+
+  const animateSnake = () => {
+    currentProgress += (targetProgress - currentProgress) * 0.08;
+
+    if (Math.abs(targetProgress - currentProgress) < 0.0005) {
+      currentProgress = targetProgress;
+    }
 
     if (snake && snakeHead) {
-      snake.style.strokeDashoffset = String(1 - progress);
-      const point = snake.getPointAtLength(snake.getTotalLength() * progress);
+      const totalLength = snake.getTotalLength();
+      const point = snake.getPointAtLength(totalLength * currentProgress);
+
+      snake.style.strokeDashoffset = String(1 - currentProgress);
       snakeHead.setAttribute("cx", String(point.x));
       snakeHead.setAttribute("cy", String(point.y));
+    }
+
+    if (currentProgress !== targetProgress) {
+      snakeAnimationFrame = window.requestAnimationFrame(animateSnake);
+    } else {
+      snakeAnimationFrame = 0;
     }
   };
 
