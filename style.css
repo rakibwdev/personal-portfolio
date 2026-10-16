@@ -650,21 +650,15 @@ img {
 .circle {
 
     position: absolute;
-
-    right: 90px;
-
-    bottom: 330px;
-
+    right: 15%;
+    top: 0;
     width: 90px;
-
     height: 90px;
-
     border:
         1px solid
         var(--blue-dark);
 
     border-radius: 50%;
-
     opacity: 0.7;
     z-index: -1;
     transition: transform 0.8s ease;
@@ -672,21 +666,13 @@ img {
 
 
 .circle::after {
-
     content: "";
-
     position: absolute;
-
     width: 8px;
-
     height: 8px;
-
     top: 10px;
-
     right: 10px;
-
     border-radius: 50%;
-
     background: var(--blue-dark);
 }
 
@@ -1619,6 +1605,9 @@ img {
     align-items: center;
     gap: 15px;
   }
+    .circle {
+        right: 0;
+}
 }
 
 @media (max-width: 760px) {
@@ -1900,9 +1889,19 @@ img {
   .footer-container {
     flex-wrap: wrap;
   }
+
+  .circle {
+        right: 16%;
+}
+
 }
 
 @media (max-width: 480px) {
+
+  .circle {
+    right: 10%;
+}
+
   .container {
     width: calc(100% - 34px);
   }
