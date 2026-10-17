@@ -10,6 +10,7 @@
   --paper: #f7f9fc;
   --white: #ffffff;
   --line: #dce5ec;
+  --section_bg:#f7fafd;
   --font-body: "DM Sans", sans-serif;
   --font-display: "Space Grotesk", sans-serif;
   --container: 1320px;
@@ -191,7 +192,7 @@ img {
 
 .site-logo img {
   display: block;
-  width: 125px;
+  width: 120px;
   height: auto;
   transition: width 400ms ease;
 }
@@ -904,7 +905,7 @@ img {
 }
 
 .expertise-section {
-  background: #f7f8fd;
+  background: var(--section_bg);
 }
 
 .section-heading {
@@ -1056,7 +1057,7 @@ img {
 }
 
 .projects-section {
-  background: #f7f8fd;
+  background: var(--section_bg);
 }
 
 .all-projects-link {
@@ -1447,7 +1448,7 @@ img {
 }
 
 .education-section {
-  background: #f7f8fd;
+  background: var(--section_bg);
 }
 
 .education-grid {
