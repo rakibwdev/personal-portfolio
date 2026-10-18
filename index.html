@@ -12,12 +12,17 @@
     content="Md. Rakibul Islam (RakibWDev) is a full-stack web developer in Dhaka, Bangladesh, specializing in WordPress, Laravel, React, and custom web applications."
   />
 
+  
+
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#F7F9FC" />
 
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
   <link
     rel="canonical"
-    href="https://rakibwdev.netlify.app/"
+    href="https://rakibwdev.vercel.app/"
   />
 
   <link rel="stylesheet" href="style.css" />
@@ -31,6 +36,44 @@
   />
 
   <script src="index.js" defer></script>
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://rakibwdev.vercel.app/#person",
+      "name": "Md. Rakibul Islam",
+      "alternateName": "RakibWDev",
+      "url": "https://rakibwdev.vercel.app/",
+      "jobTitle": "Full-Stack Web Developer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dhaka",
+        "addressCountry": "BD"
+      },
+      "sameAs": [
+        "https://github.com/rakibwdev",
+        "https://bd.linkedin.com/in/rakibwdev",
+        "https://rakibwdev.netlify.app/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rakibwdev.vercel.app/#website",
+      "url": "https://rakibwdev.vercel.app/",
+      "name": "RakibWDev",
+      "publisher": {
+        "@id": "https://rakibwdev.vercel.app/#person"
+      }
+    }
+  ]
+}
+
+</script>
+
 </head>
 
   <body>
