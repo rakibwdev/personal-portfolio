@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector(".menu-toggle");
   const mainNav = document.querySelector(".main-nav");
   const navLinks = document.querySelectorAll(".nav-link");
+  const backToTop = document.querySelector(".back-to-top");
   const snake = document.querySelector(".snake-progress");
   const snakeHead = document.querySelector(".snake-head");
   const year = document.querySelector("#year");
@@ -73,6 +74,10 @@ document.addEventListener("DOMContentLoaded", () => {
       scrollableHeight > 0
         ? Math.min(1, Math.max(0, window.scrollY / scrollableHeight))
         : 0;
+
+    if (backToTop) {
+      backToTop.classList.toggle("is-visible", window.scrollY > 500);
+    }
 
     if (snake && snakeHead && !snakeAnimationFrame) {
       snakeAnimationFrame = window.requestAnimationFrame(animateSnake);
@@ -181,6 +186,109 @@ document.addEventListener("DOMContentLoaded", () => {
   const motionPreference = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   );
+  let scrollAnimationFrame = 0;
+
+  const cancelAnimatedScroll = () => {
+    if (scrollAnimationFrame) {
+      window.cancelAnimationFrame(scrollAnimationFrame);
+      scrollAnimationFrame = 0;
+    }
+  };
+
+  const animatedScrollTo = (top) => {
+    cancelAnimatedScroll();
+
+    if (motionPreference.matches) {
+      window.scrollTo({ top, behavior: "auto" });
+      return;
+    }
+
+    const startTop = window.scrollY;
+    const distance = top - startTop;
+    const startTime = performance.now();
+    const duration = Math.min(1100, Math.max(550, Math.abs(distance) * 0.55));
+
+    const easeInOutCubic = (progress) =>
+      progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+    const animate = (now) => {
+      const progress = Math.min(1, (now - startTime) / duration);
+      window.scrollTo(0, startTop + distance * easeInOutCubic(progress));
+
+      if (progress < 1) {
+        scrollAnimationFrame = window.requestAnimationFrame(animate);
+      } else {
+        scrollAnimationFrame = 0;
+      }
+    };
+
+    scrollAnimationFrame = window.requestAnimationFrame(animate);
+  };
+
+  if (backToTop) {
+    backToTop.addEventListener("click", () => {
+      animatedScrollTo(0);
+      if (window.location.hash) {
+        window.history.pushState(null, "", window.location.pathname);
+      }
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const hash = link.getAttribute("href");
+      if (!hash || hash === "#") {
+        return;
+      }
+
+      const target = document.querySelector(hash);
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      closeMenu();
+
+      const headerHeight = header?.offsetHeight || 0;
+      const targetTop =
+        target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+
+      animatedScrollTo(Math.max(0, targetTop));
+
+      if (window.location.hash !== hash) {
+        window.history.pushState(null, "", hash);
+      }
+    });
+  });
+
+  ["wheel", "touchstart"].forEach((eventName) => {
+    window.addEventListener(eventName, cancelAnimatedScroll, { passive: true });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(
+        event.key,
+      )
+    ) {
+      cancelAnimatedScroll();
+    }
+  });
+
+  window.addEventListener("popstate", () => {
+    const target = document.querySelector(window.location.hash);
+    if (!target) {
+      return;
+    }
+
+    const headerHeight = header?.offsetHeight || 0;
+    const targetTop =
+      target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+    animatedScrollTo(Math.max(0, targetTop));
+  });
+
   const finePointer = window.matchMedia(
     "(hover: hover) and (pointer: fine)",
   );
